@@ -9,8 +9,7 @@
  * @property string $kind
  * @property string $title
  * @property string $purview
- * @property integer $creditslower
- * @property integer $creditshigher
+ * @property integer $credits
  * @property integer $star
  * @property string $create_user
  * @property string $create_time
@@ -35,13 +34,13 @@ class MemberGroup extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('status, kind, title, purview, creditslower, creditshigher, star, create_user, create_time, modify_user, modify_time', 'required'),
-			array('status, creditslower, creditshigher, star', 'numerical', 'integerOnly'=>true),
+			array('status, kind, title, purview, credits, star, create_user, create_time, modify_user, modify_time', 'required'),
+			array('status, credits, star', 'numerical', 'integerOnly'=>true),
 			array('kind', 'length', 'max'=>10),
 			array('title, create_user, modify_user', 'length', 'max'=>32),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, status, kind, title, purview, creditslower, creditshigher, star, create_user, create_time, modify_user, modify_time', 'safe', 'on'=>'search'),
+			array('id, status, kind, title, purview, credits, star, create_user, create_time, modify_user, modify_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,9 +65,8 @@ class MemberGroup extends CActiveRecord
 			'status' => 'Status',
 			'kind' => 'Kind',
 			'title' => 'Title',
-			'purview' => 'Purview',
-			'creditslower' => 'Creditslower',
-			'creditshigher' => 'Creditshigher',
+			'purview' => '紀錄功能名稱',
+			'credits' => '级别所需積分',
 			'star' => 'Star',
 			'create_user' => 'Create User',
 			'create_time' => 'Create Time',
@@ -100,8 +98,7 @@ class MemberGroup extends CActiveRecord
 		$criteria->compare('kind',$this->kind,true);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('purview',$this->purview,true);
-		$criteria->compare('creditslower',$this->creditslower);
-		$criteria->compare('creditshigher',$this->creditshigher);
+		$criteria->compare('credits',$this->credits);
 		$criteria->compare('star',$this->star);
 		$criteria->compare('create_user',$this->create_user,true);
 		$criteria->compare('create_time',$this->create_time,true);

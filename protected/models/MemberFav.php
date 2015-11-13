@@ -1,25 +1,23 @@
 <?php
 
 /**
- * This is the model class for table "comic_chap_kind".
+ * This is the model class for table "member_fav".
  *
- * The followings are the available columns in table 'comic_chap_kind':
- * @property integer $id
- * @property integer $status
- * @property string $subject
- * @property string $create_user
+ * The followings are the available columns in table 'member_fav':
+ * @property string $id
+ * @property integer $uid
+ * @property integer $fav_type
+ * @property integer $fav_id
  * @property string $create_time
- * @property string $modify_user
- * @property string $modify_time
  */
-class ComicChapKind extends CActiveRecord
+class MemberFav extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'comic_chap_kind';
+		return 'member_fav';
 	}
 
 	/**
@@ -30,13 +28,11 @@ class ComicChapKind extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('status, subject, create_user, create_time, modify_user, modify_time', 'required'),
-			array('status', 'numerical', 'integerOnly'=>true),
-			array('subject', 'length', 'max'=>16),
-			array('create_user, modify_user', 'length', 'max'=>32),
+			array('uid, fav_id, create_time', 'required'),
+			array('uid, fav_type, fav_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, status, subject, create_user, create_time, modify_user, modify_time', 'safe', 'on'=>'search'),
+			array('id, uid, fav_type, fav_id, create_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,12 +54,10 @@ class ComicChapKind extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'status' => 'Status',
-			'subject' => 'Subject',
-			'create_user' => 'Create User',
+			'uid' => 'Uid',
+			'fav_type' => 'Fav Type',
+			'fav_id' => 'Fav',
 			'create_time' => 'Create Time',
-			'modify_user' => 'Modify User',
-			'modify_time' => 'Modify Time',
 		);
 	}
 
@@ -85,13 +79,11 @@ class ComicChapKind extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
-		$criteria->compare('status',$this->status);
-		$criteria->compare('subject',$this->subject,true);
-		$criteria->compare('create_user',$this->create_user,true);
+		$criteria->compare('id',$this->id,true);
+		$criteria->compare('uid',$this->uid);
+		$criteria->compare('fav_type',$this->fav_type);
+		$criteria->compare('fav_id',$this->fav_id);
 		$criteria->compare('create_time',$this->create_time,true);
-		$criteria->compare('modify_user',$this->modify_user,true);
-		$criteria->compare('modify_time',$this->modify_time,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -102,7 +94,7 @@ class ComicChapKind extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return ComicChapKind the static model class
+	 * @return MemberFav the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

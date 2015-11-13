@@ -43,8 +43,7 @@ class MemberInfo extends CActiveRecord
 		return array(
 			array('username, password, email, mgroupid, sgroupid, experience1, experience2, experience3, introduction, log_ip, log_time, last_log_ip, last_log_time, create_user, create_time, modify_user, modify_time', 'required'),
 			array('mgroupid, sgroupid, experience1, experience2, experience3', 'numerical', 'integerOnly'=>true),
-			array('username, create_user, modify_user', 'length', 'max'=>15),
-			array('password, log_ip, last_log_ip', 'length', 'max'=>32),
+			array('username, password, log_ip, last_log_ip, create_user, modify_user', 'length', 'max'=>32),
 			array('email', 'length', 'max'=>40),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -69,9 +68,9 @@ class MemberInfo extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'uid' => 'UID',
-			'username' => '用户名',
-			'password' => '密码',
+			'uid' => 'Uid',
+			'username' => 'Username',
+			'password' => 'Password',
 			'email' => 'Email',
 			'mgroupid' => 'Mgroupid',
 			'sgroupid' => 'Sgroupid',
@@ -79,14 +78,14 @@ class MemberInfo extends CActiveRecord
 			'experience2' => 'Experience2',
 			'experience3' => 'Experience3',
 			'introduction' => 'Introduction',
-			'log_ip' => '注册IP',
-			'log_time' => '注册时间',
-			'last_log_ip' => '最后登录IP',
-			'last_log_time' => '最后登录时间',
-			'create_user' => '创建人',
-			'create_time' => '创建时间',
-			'modify_user' => '修改人',
-			'modify_time' => '修改时间',
+			'log_ip' => 'Log Ip',
+			'log_time' => 'Log Time',
+			'last_log_ip' => 'Last Log Ip',
+			'last_log_time' => 'Last Log Time',
+			'create_user' => 'Create User',
+			'create_time' => 'Create Time',
+			'modify_user' => 'Modify User',
+			'modify_time' => 'Modify Time',
 		);
 	}
 

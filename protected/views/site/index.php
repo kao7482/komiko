@@ -8,7 +8,7 @@ $this->pageTitle=Yii::app()->name;
     <div class="row">
 	  <div class="col-md-8 text-center comic-list">
 	    <div class="row">
-		  <h2>最近更新</h2>
+		  <h2><?php echo Yii::t('main','new_comic');?></h2>
 	  	  <div class="col-md-3 col-sm-4 col-xs-6">
 		    <div class="col-md-12 col-sm-12 comic-list-pic comic-list-pic-auto" style="background-image:url('pic/01.jpg')"></div>
 			<p>漫畫名：魔炮
@@ -40,7 +40,7 @@ $this->pageTitle=Yii::app()->name;
 		</div>
 		<button type="button" class="btn btn-default">查看更多</button>
 		<div class="row">
-		  <h2>熱門漫畫推薦</h2>
+		  <h2><?php echo Yii::t('main','hot_comic');?></h2>
 	  	  <div class="col-md-3 col-sm-4 col-xs-6">
 		    <div class="col-md-12 col-sm-12 comic-list-pic comic-list-pic-auto" style="background-image:url('pic/01.jpg')"></div>
 			<p>漫畫名：魔炮
